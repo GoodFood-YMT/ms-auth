@@ -40,13 +40,17 @@ export default class AuthenticationController {
   }
 
   public async me({ auth, response }: HttpContextContract) {
+    console.log('Try to authentificate user')
     try {
       await auth.use('api').authenticate()
+
+      console.log('User is authenticated ' + auth.user?.id)
 
       return response.status(200).json({
         id: auth.user?.id,
       })
     } catch {
+      console.log('User is not authenticated')
       return response.status(401).json({
         errors: [
           {
