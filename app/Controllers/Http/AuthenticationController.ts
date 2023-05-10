@@ -39,8 +39,11 @@ export default class AuthenticationController {
     await auth.logout()
   }
 
-  public async me({ auth, response }: HttpContextContract) {
+  public async authorized({ request, auth, response }: HttpContextContract) {
     try {
+      console.log(request.headers())
+      console.log(request.headers()['X-Auth-Request-Redirect'])
+
       await auth.use('api').authenticate()
       response.header('UserID', `${auth.user?.id}`)
 
