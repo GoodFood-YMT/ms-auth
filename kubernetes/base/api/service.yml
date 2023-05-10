@@ -8,7 +8,7 @@ spec:
   type: ClusterIP
   ports:
     - name: 'web'
-      port: 3333
+      port: 80
       targetPort: 3333
   selector:
     app: ms-auth

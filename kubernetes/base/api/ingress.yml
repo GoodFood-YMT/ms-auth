@@ -14,4 +14,4 @@ spec:
               service:
                 name: ms-auth
                 port:
-                  number: 3333
+                  number: 80
