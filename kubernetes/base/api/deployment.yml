@@ -23,6 +23,8 @@ spec:
           image: yasinkara/ms-auth:latest
           imagePullPolicy: Always
           name: ms-auth
+          command: ['/bin/sh']
+          args: ['-c', 'node ace migration:run --force;node ace db:seed;dumb-init node server.js']
           ports:
             - containerPort: 3333
           resources: {}
