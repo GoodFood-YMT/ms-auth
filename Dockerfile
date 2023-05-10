@@ -22,6 +22,5 @@ ENV HOST=0.0.0.0
 COPY --chown=node:node ./package*.json ./
 RUN npm ci --production
 COPY --chown=node:node --from=build /home/node/app/build .
-
 EXPOSE $PORT
-CMD ["/bin/bash", "-c", "node --harmony_proxies ace migration:run --force;dumb-init node server.js"]
+CMD [ "dumb-init", "node", "server.js" ]
