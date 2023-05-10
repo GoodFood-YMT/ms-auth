@@ -5,9 +5,6 @@ export default class Permission extends BaseModel {
   public id: string
 
   @column()
-  public name: string
-
-  @column()
   public category: string
 
   @column()

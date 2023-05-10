@@ -1,5 +1,7 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
+import { Permissions } from 'App/Enums/Permissions'
 import { Roles } from 'App/Enums/Roles'
+import Permission from 'App/Models/Permission'
 import Role from 'App/Models/Role'
 
 export default class extends BaseSeeder {
@@ -10,13 +12,17 @@ export default class extends BaseSeeder {
   }
 
   private async createPermissions() {
-    // await Permission.updateOrCreateMany('id', [
-    //   {
-    //     name: 'Get list of restaurants',
-    //     category: 'restaurants',
-    //     type: 'GET',
-    //   },
-    // ])
+    for (const permission of Object.values(Permissions)) {
+      const [category, type] = permission.split('.')
+
+      await Permission.updateOrCreate(
+        { id: permission },
+        {
+          category,
+          type,
+        }
+      )
+    }
   }
 
   private async createRoles() {

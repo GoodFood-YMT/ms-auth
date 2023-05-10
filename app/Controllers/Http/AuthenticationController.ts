@@ -1,4 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { RoutesPermissions } from 'App/Enums/RoutesPermissions'
 import User from 'App/Models/User'
 import LoginValidator from 'App/Validators/LoginValidator'
 import RegisterValidator from 'App/Validators/RegisterValidator'
@@ -41,8 +42,15 @@ export default class AuthenticationController {
 
   public async authorized({ request, auth, response }: HttpContextContract) {
     try {
-      console.log(request.headers())
-      console.log(request.headers()['X-Auth-Request-Redirect'])
+      const fromUrl = request.headers()['FromUrl'] as string
+
+      const requiredPermissions = RoutesPermissions[fromUrl]
+
+      if (!requiredPermissions) {
+        return response.status(200).json({})
+      }
+
+      // check if the user have all the permissions in the array requiredPermissions
 
       await auth.use('api').authenticate()
       response.header('UserID', `${auth.user?.id}`)
