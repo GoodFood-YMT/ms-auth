@@ -24,5 +24,5 @@ Route.group(() => {
   Route.post('/login', 'AuthenticationController.login')
   Route.post('/register', 'AuthenticationController.register')
   Route.delete('/logout', 'AuthenticationController.logout')
-  Route.get('/me', 'AuthenticationController.me')
+  Route.get('/authorized', 'AuthenticationController.authorized')
 }).prefix('/auth')
