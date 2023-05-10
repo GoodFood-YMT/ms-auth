@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-auth-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-auth-db
+  template:
+    metadata:
+      labels:
+        app: ms-auth-db
+    spec:
+      containers:
+        - name: ms-auth-db
+          image: postgres
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: ms-auth-db-config
+          volumeMounts:
+            - mountPath: /var/lib/postgres/data
+              name: db-data
+          resources: {}
+      volumes:
+        - name: db-data
+          persistentVolumeClaim:
+            claimName: ms-auth-db-volume-claim

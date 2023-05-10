@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ms-auth-db-config
+  labels:
+    app: ms-auth-db
+data:
+  POSTGRES_DB: ms-auth
+  POSTGRES_USER: api
+  POSTGRES_PASSWORD: postgres123

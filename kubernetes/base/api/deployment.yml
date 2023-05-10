@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-auth
+  labels:
+    app: ms-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-auth
+  template:
+    metadata:
+      labels:
+        app: ms-auth
+    spec:
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: ms-auth-config
+            - secretRef:
+                name: ms-auth-secret
+          image: yasinkara/ms-auth:latest
+          name: ms-auth
+          ports:
+            - containerPort: 3333
+          resources: {}
+      restartPolicy: Always

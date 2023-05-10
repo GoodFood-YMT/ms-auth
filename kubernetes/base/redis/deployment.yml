@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-auth-cache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-auth-cache
+  template:
+    metadata:
+      labels:
+        app: ms-auth-cache
+    spec:
+      containers:
+        - name: ms-auth-cache
+          image: redis
+          ports:
+            - containerPort: 6379
+          envFrom:
+            - configMapRef:
+                name: ms-auth-cache-config
+          resources: {}
