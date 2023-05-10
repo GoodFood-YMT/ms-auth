@@ -20,7 +20,9 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.post('/login', 'AuthenticationController.login')
-Route.post('/register', 'AuthenticationController.register')
-Route.delete('/logout', 'AuthenticationController.logout')
-Route.get('/me', 'AuthenticationController.me')
+Route.group(() => {
+  Route.post('/login', 'AuthenticationController.login')
+  Route.post('/register', 'AuthenticationController.register')
+  Route.delete('/logout', 'AuthenticationController.logout')
+  Route.get('/me', 'AuthenticationController.me')
+}).prefix('/auth')

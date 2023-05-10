@@ -21,6 +21,7 @@ spec:
             - secretRef:
                 name: ms-auth-secret
           image: yasinkara/ms-auth:latest
+          imagePullPolicy: Always
           name: ms-auth
           ports:
             - containerPort: 3333
