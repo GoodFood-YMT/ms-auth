@@ -49,4 +49,12 @@ export default class User extends BaseModel {
   public static async setId(user: User) {
     user.id = cuid()
   }
+
+  public havePermission(permissionId: string) {
+    return this.role.hasPermission(permissionId)
+  }
+
+  public haveAllPermissions(permissionIds: string[]) {
+    return this.role.hasAllPermissions(permissionIds)
+  }
 }

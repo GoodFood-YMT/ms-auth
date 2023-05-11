@@ -47,7 +47,9 @@ export default class extends BaseSeeder {
   }
 
   private async createRolePermissions() {
-    // const adminRole = await Role.findOrFail(Roles.ADMIN)
-    // adminRole.related('permissions').createMany([{ id: 'restaurants.GET' }])
+    // const customerRole = await Role.findOrFail(Roles.CUSTOMER)
+    // if (customerRole) {
+    //   customerRole.related('permissions').createMany([{ id: Permissions.PRODUCT_CATEGORY_CREATE }])
+    // }
   }
 }

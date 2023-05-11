@@ -50,9 +50,19 @@ export default class AuthenticationController {
         return response.status(200).json({})
       }
 
-      // check if the user have all the permissions in the array requiredPermissions
-
       await auth.use('api').authenticate()
+
+      if (!auth.user) {
+        throw new Error('User not found')
+      }
+
+      await auth.user.load('role')
+      const havePermissions = await auth.user.haveAllPermissions(requiredPermissions)
+
+      if (!havePermissions) {
+        throw new Error('User not found')
+      }
+
       response.header('UserID', `${auth.user?.id}`)
 
       return response.status(200).json({

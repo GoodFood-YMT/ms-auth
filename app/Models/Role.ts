@@ -12,4 +12,12 @@ export default class Role extends BaseModel {
     pivotTable: 'role_permission',
   })
   public permissions: ManyToMany<typeof Permission>
+
+  public hasPermission(permissionId: string): boolean {
+    return this.permissions.some((permission) => permission.id === permissionId)
+  }
+
+  public hasAllPermissions(permissionIds: string[]): boolean {
+    return permissionIds.every((permissionId) => this.hasPermission(permissionId))
+  }
 }
