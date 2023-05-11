@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.string('category', 100).notNullable()
       table.string('type', 100).notNullable()
 
-      table.unique(['name', 'category', 'type'])
+      table.unique(['category', 'type'])
     })
   }
 
