@@ -48,38 +48,26 @@ export default class AuthenticationController {
       const fromUrl = request.header('FromUrl')
       const method = request.header('Method')
 
-      console.log('fromUrl', fromUrl)
-      console.log('method', method)
-
       if (!fromUrl || !method) {
         throw new Error('Invalid request')
       }
 
       const requiredPermission = getRoutePermission(removeLastSlash(fromUrl), method)
 
-      console.log('requiredPermission', requiredPermission)
-
       if (!requiredPermission) {
         return response.status(200).json({})
       }
 
-      console.log('try to authenticate')
-
-      const user = await auth.use('api').authenticate()
+      await auth.use('api').authenticate()
 
       if (!auth.user) {
         throw new Error('User not found')
       }
 
-      console.log('authenticated')
-
       const role = await Role.findByOrFail('id', auth.user.roleId)
       const permissions = await role.related('permissions').query()
-      console.log(permissions)
 
-      const havePermission = await user.havePermission(requiredPermission)
-
-      console.log('havePermission', havePermission)
+      const havePermission = permissions.some((permission) => permission.id === requiredPermission)
 
       if (!havePermission) {
         throw new Error('User not found')
