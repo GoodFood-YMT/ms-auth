@@ -70,7 +70,7 @@ export default class AuthenticationController {
       const havePermission = permissions.some((permission) => permission.id === requiredPermission)
 
       if (!havePermission) {
-        throw new Error('User not found')
+        throw new Error("You don't have permission to access this route")
       }
 
       response.header('UserID', `${auth.user?.id}`)
