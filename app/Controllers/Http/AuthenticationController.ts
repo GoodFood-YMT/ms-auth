@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { getRoutePermission } from 'App/Enums/RoutesPermissions'
+import Role from 'App/Models/Role'
 import User from 'App/Models/User'
 import { removeLastSlash } from 'App/Utils/String'
 import LoginValidator from 'App/Validators/LoginValidator'
@@ -72,9 +73,8 @@ export default class AuthenticationController {
 
       console.log('authenticated')
 
-      await user.load('role')
-      console.log('role', user.role)
-      console.log('permissions', user.role.permissions)
+      const role = await Role.findByOrFail('id', auth.user.roleId)
+      console.log(role)
 
       const havePermission = await user.havePermission(requiredPermission)
 
