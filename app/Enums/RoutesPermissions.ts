@@ -1,10 +1,8 @@
 import { Permissions } from 'App/Enums/Permissions'
 
-export type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
-
 type RoutePermission = {
   route: string
-  method: Method
+  method: string
   permission: string
 }
 
@@ -21,9 +19,13 @@ const routesPermissions: RoutePermission[] = [
   },
 ]
 
-export const getRoutePermission = (route: string, method: Method): string | undefined => {
+export const getRoutePermission = (route: string, method: string): string | undefined => {
+  console.log(route, method)
+
   const routePermission = routesPermissions.find(
-    (routePermission) => routePermission.route === route && routePermission.method === method
+    (routePermission) =>
+      routePermission.route.toLowerCase() === route.toLowerCase() &&
+      routePermission.method.toLowerCase() === method.toLowerCase()
   )
 
   return routePermission?.permission
