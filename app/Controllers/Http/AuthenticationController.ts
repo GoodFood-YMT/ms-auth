@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { getRoutePermission } from 'App/Enums/RoutesPermissions'
 import User from 'App/Models/User'
+import { removeLastSlash } from 'App/Utils/String'
 import LoginValidator from 'App/Validators/LoginValidator'
 import RegisterValidator from 'App/Validators/RegisterValidator'
 
@@ -53,7 +54,7 @@ export default class AuthenticationController {
         throw new Error('Invalid request')
       }
 
-      const requiredPermission = getRoutePermission(fromUrl, method)
+      const requiredPermission = getRoutePermission(removeLastSlash(fromUrl), method)
 
       console.log('requiredPermission', requiredPermission)
 
@@ -61,14 +62,20 @@ export default class AuthenticationController {
         return response.status(200).json({})
       }
 
+      console.log('try to authenticate')
+
       await auth.use('api').authenticate()
 
       if (!auth.user) {
         throw new Error('User not found')
       }
 
+      console.log('authenticated')
+
       await auth.user.load('role')
       const havePermission = await auth.user.havePermission(requiredPermission)
+
+      console.log('havePermission', havePermission)
 
       if (!havePermission) {
         throw new Error('User not found')
