@@ -64,7 +64,7 @@ export default class AuthenticationController {
 
       console.log('try to authenticate')
 
-      await auth.use('api').authenticate()
+      const user = await auth.use('api').authenticate()
 
       if (!auth.user) {
         throw new Error('User not found')
@@ -72,8 +72,8 @@ export default class AuthenticationController {
 
       console.log('authenticated')
 
-      await auth.user.load('role')
-      const havePermission = await auth.user.havePermission(requiredPermission)
+      await user.load('role')
+      const havePermission = await user.havePermission(requiredPermission)
 
       console.log('havePermission', havePermission)
 
