@@ -72,8 +72,6 @@ export default class AuthenticationController {
 
       console.log('authenticated')
 
-      await user.load('role')
-      console.log('role loaded')
       const havePermission = await user.havePermission(requiredPermission)
 
       console.log('havePermission', havePermission)
