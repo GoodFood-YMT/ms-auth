@@ -44,11 +44,12 @@ export default class AuthenticationController {
     try {
       const fromUrl = request.headers()['FromUrl'] as string
       const method = request.headers()['Method'] as string
-      console.log(request.headers())
 
-      const requiredPermissions = getRoutePermission(fromUrl, method as Method)
+      const requiredPermission = getRoutePermission(fromUrl, method as Method)
 
-      if (!requiredPermissions) {
+      console.log(requiredPermission)
+
+      if (!requiredPermission) {
         return response.status(200).json({})
       }
 
@@ -59,9 +60,9 @@ export default class AuthenticationController {
       }
 
       await auth.user.load('role')
-      const havePermissions = await auth.user.havePermission(requiredPermissions)
+      const havePermission = await auth.user.havePermission(requiredPermission)
 
-      if (!havePermissions) {
+      if (!havePermission) {
         throw new Error('User not found')
       }
 
