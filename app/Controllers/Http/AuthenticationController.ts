@@ -74,7 +74,8 @@ export default class AuthenticationController {
       console.log('authenticated')
 
       const role = await Role.findByOrFail('id', auth.user.roleId)
-      console.log(role)
+      const permissions = await role.related('permissions').query()
+      console.log(permissions)
 
       const havePermission = await user.havePermission(requiredPermission)
 
