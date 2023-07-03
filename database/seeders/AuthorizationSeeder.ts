@@ -13,8 +13,9 @@ export default class extends BaseSeeder {
 
   private async createPermissions() {
     for (const permission of Object.values(Permissions)) {
-      if (await Permission.findBy('id', permission)) continue
-      await Permission.create({ id: permission })
+      if (!(await Permission.findBy('id', permission))) {
+        await Permission.create({ id: permission })
+      }
     }
   }
 
@@ -42,7 +43,16 @@ export default class extends BaseSeeder {
   private async createRolePermissions() {
     const customerRole = await Role.findOrFail(Roles.CUSTOMER)
     if (customerRole) {
-      customerRole.related('permissions').createMany([{ id: Permissions.PRODUCT_CATEGORY_CREATE }])
+      if (
+        !(await customerRole
+          .related('permissions')
+          .query()
+          .where('permissions.id', Permissions.PRODUCT_CATEGORY_CREATE))
+      ) {
+        await customerRole
+          .related('permissions')
+          .createMany([{ id: Permissions.PRODUCT_CATEGORY_CREATE }])
+      }
     }
   }
 }
