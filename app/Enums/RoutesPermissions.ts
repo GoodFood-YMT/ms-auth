@@ -11,6 +11,11 @@ type RoutePermission = {
 const routesPermissions: RoutePermission[] = [
   {
     route: '/mailing',
+    method: 'GET',
+    permission: Permissions.PRODUCT_CATEGORY_CREATE,
+  },
+  {
+    route: '/mailing',
     method: 'POST',
     permission: Permissions.PRODUCT_CATEGORY_CREATE,
   },
