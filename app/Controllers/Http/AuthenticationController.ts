@@ -43,11 +43,15 @@ export default class AuthenticationController {
   public async authorized({ request, auth, response }: HttpContextContract) {
     try {
       console.log(request.headers())
-      const fromUrl = request.headers()['FromUrl'] as string
-      const method = request.headers()['Method'] as string
+      const fromUrl = request.header('FromUrl')
+      const method = request.header('Method')
 
       console.log('fromUrl', fromUrl)
       console.log('method', method)
+
+      if (!fromUrl || !method) {
+        throw new Error('Invalid request')
+      }
 
       const requiredPermission = getRoutePermission(fromUrl, method)
 
