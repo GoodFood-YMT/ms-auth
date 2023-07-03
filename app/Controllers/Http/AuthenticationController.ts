@@ -46,9 +46,12 @@ export default class AuthenticationController {
       const fromUrl = request.headers()['FromUrl'] as string
       const method = request.headers()['Method'] as string
 
+      console.log('fromUrl', fromUrl)
+      console.log('method', method)
+
       const requiredPermission = getRoutePermission(fromUrl, method)
 
-      console.log(requiredPermission)
+      console.log('requiredPermission', requiredPermission)
 
       if (!requiredPermission) {
         return response.status(200).json({})
