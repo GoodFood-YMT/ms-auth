@@ -1,5 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { getRoutePermission } from 'App/Enums/RoutesPermissions'
+import { Method, getRoutePermission } from 'App/Enums/RoutesPermissions'
 import User from 'App/Models/User'
 import LoginValidator from 'App/Validators/LoginValidator'
 import RegisterValidator from 'App/Validators/RegisterValidator'
@@ -43,9 +43,10 @@ export default class AuthenticationController {
   public async authorized({ request, auth, response }: HttpContextContract) {
     try {
       const fromUrl = request.headers()['FromUrl'] as string
+      const method = request.headers()['Method'] as string
       console.log(request.headers())
 
-      const requiredPermissions = getRoutePermission(fromUrl, 'GET')
+      const requiredPermissions = getRoutePermission(fromUrl, method as Method)
 
       if (!requiredPermissions) {
         return response.status(200).json({})
