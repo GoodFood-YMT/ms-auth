@@ -71,7 +71,8 @@ export default class AuthenticationController {
       }
 
       console.log('authenticated')
-      console.log('user', user)
+
+      await user.load('role')
       console.log('role', user.role)
       console.log('permissions', user.role.permissions)
 
