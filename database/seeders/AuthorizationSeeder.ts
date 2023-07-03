@@ -13,15 +13,8 @@ export default class extends BaseSeeder {
 
   private async createPermissions() {
     for (const permission of Object.values(Permissions)) {
-      const [category, type] = permission.split('.')
-
-      await Permission.updateOrCreate(
-        { id: permission },
-        {
-          category,
-          type,
-        }
-      )
+      if (await Permission.findBy('id', permission)) continue
+      await Permission.create({ id: permission })
     }
   }
 
