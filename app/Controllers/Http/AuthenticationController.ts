@@ -42,6 +42,7 @@ export default class AuthenticationController {
 
   public async authorized({ request, auth, response }: HttpContextContract) {
     try {
+      console.log(request.headers())
       const fromUrl = request.headers()['FromUrl'] as string
       const method = request.headers()['Method'] as string
 
