@@ -69,6 +69,8 @@ export default class AuthenticationController {
 
       const havePermission = permissions.some((permission) => permission.id === requiredPermission)
 
+      console.log('havePermission', havePermission)
+
       if (!havePermission) {
         throw new Error("You don't have permission to access this route")
       }
