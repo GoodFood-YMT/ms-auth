@@ -54,15 +54,21 @@ export default class AuthenticationController {
 
       const requiredPermission = getRoutePermission(removeLastSlash(fromUrl), method)
 
+      console.log('requiredPermission', requiredPermission)
+
       if (!requiredPermission) {
         return response.status(200).json({})
       }
+
+      console.log('try to authenticate')
 
       await auth.use('api').authenticate()
 
       if (!auth.user) {
         throw new Error('User not found')
       }
+
+      console.log('auth.user', auth.user)
 
       const role = await Role.findByOrFail('id', auth.user.roleId)
       const permissions = await role.related('permissions').query()
