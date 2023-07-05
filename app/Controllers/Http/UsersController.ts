@@ -22,7 +22,7 @@ export default class UsersController {
     const user = await User.findOrFail(id)
 
     return {
-      user,
+      ...user,
     }
   }
 
@@ -36,15 +36,13 @@ export default class UsersController {
       (payload.roleId === Roles.MANAGER || payload.roleId === Roles.DELIVERER) &&
       !payload.restaurantId
     ) {
-      throw new Error('Restaurant id is required for this role')
+      throw new Error('restaurantId is required for this role')
     }
 
     const user = await User.findOrFail(id)
 
     user.roleId = payload.roleId
-    if (payload.restaurantId) {
-      user.restaurantId = payload.restaurantId
-    }
+    user.restaurantId = payload.restaurantId ? payload.restaurantId : null
     await user.save()
 
     return {
