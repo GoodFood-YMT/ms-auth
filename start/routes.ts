@@ -25,4 +25,8 @@ Route.group(() => {
   Route.post('/register', 'AuthenticationController.register')
   Route.delete('/logout', 'AuthenticationController.logout')
   Route.get('/authorized', 'AuthenticationController.authorized')
+
+  Route.get('/users', 'UsersController.index')
+  Route.get('/users/:id', 'UsersController.show')
+  Route.put('/users/:id', 'UsersController.update')
 }).prefix('/auth')
