@@ -28,6 +28,9 @@ export default class User extends BaseModel {
   public password: string
 
   @column()
+  public restaurantId: number | null
+
+  @column()
   public roleId: string
 
   @belongsTo(() => Role, {
