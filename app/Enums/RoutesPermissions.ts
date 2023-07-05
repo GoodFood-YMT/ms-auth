@@ -32,6 +32,31 @@ const routesPermissions: RoutePermission[] = [
     method: 'DELETE',
     permission: Permissions.BASKET_DELETE,
   },
+  {
+    route: '/delivery/addresses',
+    method: 'GET',
+    permission: Permissions.ADDRESSES_ALL,
+  },
+  {
+    route: '/delivery/addresses',
+    method: 'POST',
+    permission: Permissions.ADDRESSES_ALL,
+  },
+  {
+    route: '/delivery/addresses/*',
+    method: 'GET',
+    permission: Permissions.ADDRESSES_ALL,
+  },
+  {
+    route: '/delivery/addresses/*',
+    method: 'PATCH',
+    permission: Permissions.ADDRESSES_ALL,
+  },
+  {
+    route: '/delivery/addresses/*',
+    method: 'DELETE',
+    permission: Permissions.ADDRESSES_ALL,
+  },
 ]
 
 export const getRoutePermission = (route: string, method: string): string | undefined => {
@@ -39,7 +64,9 @@ export const getRoutePermission = (route: string, method: string): string | unde
 
   const routePermission = routesPermissions.find(
     (routePermission) =>
-      routePermission.route.toLowerCase() === route.toLowerCase() &&
+      route
+        .toLowerCase()
+        .match(routePermission.route.replace('/', '\\/').replace('*', '(.*)').toLowerCase()) &&
       routePermission.method.toLowerCase() === method.toLowerCase()
   )
 
