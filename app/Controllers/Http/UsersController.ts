@@ -23,7 +23,7 @@ export default class UsersController {
     const user = await User.findOrFail(id)
 
     return {
-      ...user,
+      ...user.toJSON(),
     }
   }
 
@@ -47,7 +47,7 @@ export default class UsersController {
     await user.save()
 
     return {
-      user,
+      ...user.toJSON(),
     }
   }
 }
