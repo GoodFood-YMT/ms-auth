@@ -68,12 +68,7 @@ export default class AuthenticationController {
         throw new Error('User not found')
       }
 
-      console.log('auth.user', auth.user)
-
-      const role = await Role.findByOrFail('id', auth.user.roleId)
-      const permissions = await role.related('permissions').query()
-
-      const havePermission = permissions.some((permission) => permission.id === requiredPermission)
+      const havePermission = await auth.user.havePermission(requiredPermission)
 
       console.log('havePermission', havePermission)
 

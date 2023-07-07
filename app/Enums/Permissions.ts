@@ -1,4 +1,6 @@
 export const Permissions: { [key: string]: string } = {
+  USERS_GET: 'users.get',
+  USERS_PUT: 'users.put',
   RESTAURANTS_POST: 'restaurants.post',
   RESTAURANTS_PUT: 'restaurants.put',
   CATALOG_CATEGORIES_POST: 'catalog.categories.post',
