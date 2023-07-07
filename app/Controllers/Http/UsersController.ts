@@ -4,14 +4,15 @@ import User from 'App/Models/User'
 import UpdateRoleValidator from 'App/Validators/UpdateRoleValidator'
 
 export default class UsersController {
-  public async index({}: HttpContextContract) {
+  public async index({ request }: HttpContextContract) {
     // TODO : Check Permission
 
-    const users = await User.all()
+    const page = request.input('page', 1)
+    const limit = 10
 
-    return {
-      users,
-    }
+    const users = await User.query().paginate(page, limit)
+
+    return users
   }
 
   public async show({ request }: HttpContextContract) {
