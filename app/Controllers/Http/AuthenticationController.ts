@@ -1,6 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { getRoutePermission } from 'App/Enums/RoutesPermissions'
-import Role from 'App/Models/Role'
 import User from 'App/Models/User'
 import { removeLastSlash } from 'App/Utils/String'
 import LoginValidator from 'App/Validators/LoginValidator'
