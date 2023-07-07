@@ -8,14 +8,79 @@ type RoutePermission = {
 
 const routesPermissions: RoutePermission[] = [
   {
-    route: '/mailing',
-    method: 'GET',
-    permission: Permissions.PRODUCT_CATEGORY_CREATE,
+    route: '/restaurants',
+    method: 'POST',
+    permission: Permissions.RESTAURANTS_POST,
   },
   {
-    route: '/mailing',
+    route: '/restaurants/*',
+    method: 'PUT',
+    permission: Permissions.RESTAURANTS_PUT,
+  },
+  {
+    route: '/catalog/categories',
     method: 'POST',
-    permission: Permissions.PRODUCT_CATEGORY_CREATE,
+    permission: Permissions.CATALOG_CATEGORIES_POST,
+  },
+  {
+    route: '/catalog/categories/*',
+    method: 'PUT',
+    permission: Permissions.CATALOG_CATEGORIES_PUT,
+  },
+  {
+    route: '/catalog/*/ingredients',
+    method: 'GET',
+    permission: Permissions.CATALOG_INGREDIENTS_GET,
+  },
+  {
+    route: '/catalog/*/ingredients',
+    method: 'POST',
+    permission: Permissions.CATALOG_INGREDIENTS_POST,
+  },
+  {
+    route: '/catalog/*/ingredients/*',
+    method: 'GET',
+    permission: Permissions.CATALOG_INGREDIENTS_GET,
+  },
+  {
+    route: '/catalog/*/ingredients/*',
+    method: 'PUT',
+    permission: Permissions.CATALOG_INGREDIENTS_PUT,
+  },
+  {
+    route: '/catalog/*/products',
+    method: 'POST',
+    permission: Permissions.CATALOG_PRODUCTS_POST,
+  },
+  {
+    route: '/catalog/*/products/*',
+    method: 'PUT',
+    permission: Permissions.CATALOG_PRODUCTS_PUT,
+  },
+  {
+    route: '/catalog/products/*/ingredients',
+    method: 'GET',
+    permission: Permissions.CATALOG_PRODUCTS_INGREDIENTS_GET,
+  },
+  {
+    route: '/catalog/products/*/ingredients/*',
+    method: 'GET',
+    permission: Permissions.CATALOG_PRODUCTS_INGREDIENTS_GET,
+  },
+  {
+    route: '/catalog/products/*/ingredients/*',
+    method: 'POST',
+    permission: Permissions.CATALOG_PRODUCTS_INGREDIENTS_POST,
+  },
+  {
+    route: '/catalog/products/*/ingredients/*',
+    method: 'PUT',
+    permission: Permissions.CATALOG_PRODUCTS_INGREDIENTS_PUT,
+  },
+  {
+    route: '/catalog/products/*/ingredients/*',
+    method: 'DELETE',
+    permission: Permissions.CATALOG_PRODUCTS_INGREDIENTS_DELETE,
   },
   {
     route: '/basket',
@@ -56,6 +121,21 @@ const routesPermissions: RoutePermission[] = [
     route: '/delivery/addresses/*',
     method: 'DELETE',
     permission: Permissions.ADDRESSES_ALL,
+  },
+  {
+    route: '/delivery/deliveries',
+    method: 'POST',
+    permission: Permissions.DELIVERIES_POST,
+  },
+  {
+    route: '/delivery/deliveries/*',
+    method: 'GET',
+    permission: Permissions.DELIVERIES_GET,
+  },
+  {
+    route: '/delivery/deliveries/*',
+    method: 'PATCH',
+    permission: Permissions.DELIVERIES_PATCH,
   },
 ]
 
