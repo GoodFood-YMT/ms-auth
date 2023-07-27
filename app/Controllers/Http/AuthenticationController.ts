@@ -77,6 +77,7 @@ export default class AuthenticationController {
 
       response.header('UserID', `${auth.user?.id}`)
       response.header('Role', `${auth.user?.roleId}`)
+      response.header('RestaurantID', `${auth.user?.restaurantId}`)
 
       return response.status(200).json({
         id: auth.user?.id,
