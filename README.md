@@ -1,10 +1,8 @@
-# MS-AUTH
+# Auth Microservice
 
-## Prerequisite
-
-- Docker (or Docker Desktop)
-- Kubernetes
+[Global Documentation](https://doc-goodfood-ymt.notion.site/API-Documentation-79d18341ef67437cb9c5c7c71af84658?pvs=4)
 
 ## Setup
 
-- Execute `kubectl apply -k ./kubernetes/overlays/dev`
+Run this command at the repository root  
+`kubectl apply -k ./kubernetes/overlays/dev`
