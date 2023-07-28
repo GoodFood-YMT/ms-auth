@@ -75,7 +75,7 @@ export default class User extends BaseModel {
       JSON.stringify({
         to: user.email,
         subject: 'Welcome to GoodFood',
-        text: `Hello ${user.firstname} ${user.lastname}, welcome to our app`,
+        message: `Hello ${user.firstname} ${user.lastname}, welcome to our app`,
       })
     )
   }
