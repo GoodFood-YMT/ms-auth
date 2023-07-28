@@ -26,7 +26,7 @@ export default class UpdateRoleValidator {
    */
   public schema = schema.create({
     roleId: schema.enum([...Object.values(Roles)]),
-    restaurantId: schema.number.optional(),
+    restaurantId: schema.string.optional(),
   })
 
   /**

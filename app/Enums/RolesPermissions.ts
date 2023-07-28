@@ -4,6 +4,7 @@ import { Permissions } from 'App/Enums/Permissions'
 export const RolesPermissions: { [key: string]: string[] } = {
   [Roles.ADMIN]: [...Object.values(Permissions)],
   [Roles.MANAGER]: [
+    Permissions.USERS_GET,
     Permissions.CATALOG_CATEGORIES_POST,
     Permissions.CATALOG_CATEGORIES_PUT,
     Permissions.CATALOG_INGREDIENTS_GET,
