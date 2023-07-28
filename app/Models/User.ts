@@ -7,9 +7,11 @@ import {
   beforeCreate,
   belongsTo,
   BelongsTo,
+  afterCreate,
 } from '@ioc:Adonis/Lucid/Orm'
 import { cuid } from '@ioc:Adonis/Core/Helpers'
 import Role from 'App/Models/Role'
+import Rabbit from '@ioc:Adonis/Addons/Rabbit'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -63,5 +65,18 @@ export default class User extends BaseModel {
   @beforeCreate()
   public static async setId(user: User) {
     user.id = cuid()
+  }
+
+  @afterCreate()
+  public static async sendMail(user: User) {
+    await Rabbit.assertQueue('mailing')
+    await Rabbit.sendToQueue(
+      'mailing',
+      JSON.stringify({
+        to: user.email,
+        subject: 'Welcome to GoodFood',
+        text: `Hello ${user.firstname} ${user.lastname}, welcome to our app`,
+      })
+    )
   }
 }
