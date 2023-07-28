@@ -18,6 +18,7 @@ export const RolesPermissions: { [key: string]: string[] } = {
     Permissions.CATALOG_PRODUCTS_INGREDIENTS_DELETE,
     Permissions.ADDRESSES_ALL,
     Permissions.DELIVERIES_GET,
+    Permissions.DELIVERIES_ALL,
     Permissions.BASKET_GET,
     Permissions.BASKET_POST,
     Permissions.BASKET_DELETE,
@@ -25,6 +26,9 @@ export const RolesPermissions: { [key: string]: string[] } = {
   [Roles.DELIVERER]: [
     Permissions.ADDRESSES_ALL,
     Permissions.DELIVERIES_GET,
+    Permissions.DELIVERIES_ALL,
+    Permissions.DELIVERIES_TAKE,
+    Permissions.DELIVERIES_COMPLETE,
     Permissions.BASKET_GET,
     Permissions.BASKET_POST,
     Permissions.BASKET_DELETE,

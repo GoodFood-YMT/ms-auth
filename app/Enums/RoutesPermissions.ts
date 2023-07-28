@@ -123,19 +123,24 @@ const routesPermissions: RoutePermission[] = [
     permission: Permissions.ADDRESSES_ALL,
   },
   {
-    route: '/delivery/deliveries',
-    method: 'POST',
-    permission: Permissions.DELIVERIES_POST,
-  },
-  {
     route: '/delivery/deliveries/*',
     method: 'GET',
     permission: Permissions.DELIVERIES_GET,
   },
   {
-    route: '/delivery/deliveries/*',
-    method: 'PATCH',
-    permission: Permissions.DELIVERIES_PATCH,
+    route: '/delivery/deliveries',
+    method: 'GET',
+    permission: Permissions.DELIVERIES_ALL,
+  },
+  {
+    route: '/delivery/deliveries/*/take',
+    method: 'POST',
+    permission: Permissions.DELIVERIES_TAKE,
+  },
+  {
+    route: '/delivery/deliveries/*/complete',
+    method: 'POST',
+    permission: Permissions.DELIVERIES_COMPLETE,
   },
 ]
 
