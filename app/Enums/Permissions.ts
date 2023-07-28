@@ -22,4 +22,5 @@ export const Permissions: { [key: string]: string } = {
   BASKET_GET: 'basket.get',
   BASKET_POST: 'basket.post',
   BASKET_DELETE: 'basket.delete',
+  BASKET_CLEAR: 'basket.clear',
 } as const

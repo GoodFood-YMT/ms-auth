@@ -98,6 +98,11 @@ const routesPermissions: RoutePermission[] = [
     permission: Permissions.BASKET_DELETE,
   },
   {
+    route: '/basket/clear',
+    method: 'DELETE',
+    permission: Permissions.BASKET_CLEAR,
+  },
+  {
     route: '/delivery/addresses',
     method: 'GET',
     permission: Permissions.ADDRESSES_ALL,
