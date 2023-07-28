@@ -15,9 +15,15 @@ export default class UsersController {
     const page = request.input('page', 1)
     const limit = 10
 
-    const users = await User.query().paginate(page, limit)
+    const query = User.query()
 
-    return users
+    if (auth.user.roleId === Roles.MANAGER) {
+      query.where('restaurant_id', auth.user.restaurantId ?? '')
+    }
+
+    query.paginate(page, limit)
+
+    return await query
   }
 
   public async show({ request, auth }: HttpContextContract) {
