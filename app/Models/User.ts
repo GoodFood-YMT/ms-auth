@@ -79,4 +79,16 @@ export default class User extends BaseModel {
       })
     )
   }
+
+  @afterCreate()
+  public static async sendToEventBus(user: User) {
+    await Rabbit.assertQueue('marketing.user.created')
+    await Rabbit.sendToQueue(
+      'marketing.user.created',
+      JSON.stringify({
+        userId: user.id,
+        createdAt: user.createdAt,
+      })
+    )
+  }
 }
