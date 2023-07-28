@@ -28,7 +28,7 @@ export default class User extends BaseModel {
   public password: string
 
   @column()
-  public restaurantId: number | null
+  public restaurantId: string | null
 
   @column()
   public roleId: string
