@@ -147,6 +147,21 @@ const routesPermissions: RoutePermission[] = [
     method: 'POST',
     permission: Permissions.DELIVERIES_COMPLETE,
   },
+  {
+    route: '/ordering/orders',
+    method: 'GET',
+    permission: Permissions.ORDERS_GET,
+  },
+  {
+    route: '/ordering/orders',
+    method: 'POST',
+    permission: Permissions.ORDERS_POST,
+  },
+  {
+    route: '/ordering/orders/*',
+    method: 'GET',
+    permission: Permissions.ORDERS_GET,
+  },
 ]
 
 export const getRoutePermission = (route: string, method: string): string | undefined => {
