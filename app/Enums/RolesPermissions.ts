@@ -23,6 +23,9 @@ export const RolesPermissions: { [key: string]: string[] } = {
     Permissions.BASKET_POST,
     Permissions.BASKET_DELETE,
     Permissions.BASKET_CLEAR,
+    Permissions.ORDERS_GET,
+    Permissions.ORDERS_POST,
+    Permissions.MANAGER_ORDERS_GET,
   ],
   [Roles.DELIVERER]: [
     Permissions.ADDRESSES_ALL,
@@ -34,6 +37,8 @@ export const RolesPermissions: { [key: string]: string[] } = {
     Permissions.BASKET_POST,
     Permissions.BASKET_DELETE,
     Permissions.BASKET_CLEAR,
+    Permissions.ORDERS_GET,
+    Permissions.ORDERS_POST,
   ],
   [Roles.CUSTOMER]: [
     Permissions.ADDRESSES_ALL,
@@ -42,5 +47,7 @@ export const RolesPermissions: { [key: string]: string[] } = {
     Permissions.BASKET_POST,
     Permissions.BASKET_DELETE,
     Permissions.BASKET_CLEAR,
+    Permissions.ORDERS_GET,
+    Permissions.ORDERS_POST,
   ],
 }
