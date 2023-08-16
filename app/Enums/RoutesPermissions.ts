@@ -162,6 +162,41 @@ const routesPermissions: RoutePermission[] = [
     method: 'GET',
     permission: Permissions.ORDERS_GET,
   },
+  {
+    route: '/providers',
+    method: 'GET',
+    permission: Permissions.PROVIDERS_ALL,
+  },
+  {
+    route: '/providers',
+    method: 'POST',
+    permission: Permissions.PROVIDERS_ALL,
+  },
+  {
+    route: '/providers/*',
+    method: 'GET',
+    permission: Permissions.PROVIDERS_ALL,
+  },
+  {
+    route: '/providers/*',
+    method: 'PATCH',
+    permission: Permissions.PROVIDERS_ALL,
+  },
+  {
+    route: '/providers/*/ingredients',
+    method: 'GET',
+    permission: Permissions.PROVIDERS_ALL,
+  },
+  {
+    route: '/providers/*/ingredients',
+    method: 'POST',
+    permission: Permissions.PROVIDERS_ALL,
+  },
+  {
+    route: '/providers/*/ingredients',
+    method: 'DELETE',
+    permission: Permissions.PROVIDERS_ALL,
+  },
 ]
 
 export const getRoutePermission = (route: string, method: string): string | undefined => {

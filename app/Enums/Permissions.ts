@@ -26,4 +26,5 @@ export const Permissions: { [key: string]: string } = {
   ORDERS_GET: 'orders.get',
   ORDERS_POST: 'orders.post',
   MANAGER_ORDERS_GET: 'manager.orders.get',
+  PROVIDERS_ALL: 'providers.all',
 } as const
