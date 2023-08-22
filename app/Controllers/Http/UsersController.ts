@@ -3,6 +3,7 @@ import { Permissions } from 'App/Enums/Permissions'
 import { Roles } from 'App/Enums/Roles'
 import User from 'App/Models/User'
 import UpdateRoleValidator from 'App/Validators/UpdateRoleValidator'
+import RestaurantApi from '../../Api/RestaurantApi'
 
 export default class UsersController {
   public async index({ request, auth }: HttpContextContract) {
@@ -42,7 +43,7 @@ export default class UsersController {
     }
   }
 
-  public async update({ request, auth }: HttpContextContract) {
+  public async update({ request, auth, response }: HttpContextContract) {
     await auth.use('api').authenticate()
 
     if (!auth.user || !auth.user.havePermission(Permissions.USERS_PUT)) {
@@ -57,6 +58,16 @@ export default class UsersController {
       !payload.restaurantId
     ) {
       throw new Error('restaurantId is required for this role')
+    }
+
+    if (payload.restaurantId) {
+      const restaurantData = await RestaurantApi.getRestaurant(payload.restaurantId)
+
+      if (!restaurantData) {
+        return response.status(400).send({
+          message: 'Restaurant not found',
+        })
+      }
     }
 
     const user = await User.findOrFail(id)

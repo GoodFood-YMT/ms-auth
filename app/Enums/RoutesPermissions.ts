@@ -63,12 +63,12 @@ const routesPermissions: RoutePermission[] = [
     permission: Permissions.CATALOG_PRODUCTS_GET,
   },
   {
-    route: '/catalog/*/products',
+    route: '/catalog/products',
     method: 'POST',
     permission: Permissions.CATALOG_PRODUCTS_POST,
   },
   {
-    route: '/catalog/*/products/*',
+    route: '/catalog/products/*',
     method: 'PUT',
     permission: Permissions.CATALOG_PRODUCTS_PUT,
   },
@@ -161,6 +161,11 @@ const routesPermissions: RoutePermission[] = [
     route: '/delivery/deliveries/*/complete',
     method: 'POST',
     permission: Permissions.DELIVERIES_COMPLETE,
+  },
+  {
+    route: '/ordering/manager/orders',
+    method: 'GET',
+    permission: Permissions.MANAGER_ORDERS_GET,
   },
   {
     route: '/ordering/orders',
