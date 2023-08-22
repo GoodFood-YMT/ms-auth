@@ -25,6 +25,7 @@ Route.group(() => {
   Route.post('/register', 'AuthenticationController.register')
   Route.delete('/logout', 'AuthenticationController.logout')
   Route.get('/authorized', 'AuthenticationController.authorized')
+  Route.get('/me', 'AuthenticationController.me')
 
   Route.get('/users', 'UsersController.index')
   Route.get('/users/:id', 'UsersController.show')

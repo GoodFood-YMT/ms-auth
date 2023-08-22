@@ -92,4 +92,14 @@ export default class AuthenticationController {
       })
     }
   }
+
+  public async me({ auth }: HttpContextContract) {
+    await auth.use('api').authenticate()
+
+    if (!auth.user) {
+      throw new Error('User not found')
+    }
+
+    return auth.user
+  }
 }
