@@ -8,6 +8,11 @@ type RoutePermission = {
 
 const routesPermissions: RoutePermission[] = [
   {
+    route: '/restaurants/all',
+    method: 'GET',
+    permission: Permissions.RESTAURANTS_GET,
+  },
+  {
     route: '/restaurants',
     method: 'POST',
     permission: Permissions.RESTAURANTS_POST,
@@ -16,6 +21,11 @@ const routesPermissions: RoutePermission[] = [
     route: '/restaurants/*',
     method: 'PUT',
     permission: Permissions.RESTAURANTS_PUT,
+  },
+  {
+    route: '/restaurants/*',
+    method: 'DELETE',
+    permission: Permissions.RESTAURANTS_DELETE,
   },
   {
     route: '/catalog/categories',
@@ -46,6 +56,11 @@ const routesPermissions: RoutePermission[] = [
     route: '/catalog/*/ingredients/*',
     method: 'PUT',
     permission: Permissions.CATALOG_INGREDIENTS_PUT,
+  },
+  {
+    route: '/catalog/*/products/all',
+    method: 'GET',
+    permission: Permissions.CATALOG_PRODUCTS_GET,
   },
   {
     route: '/catalog/*/products',

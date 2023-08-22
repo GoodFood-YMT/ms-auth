@@ -10,6 +10,7 @@ export const RolesPermissions: { [key: string]: string[] } = {
     Permissions.CATALOG_INGREDIENTS_GET,
     Permissions.CATALOG_INGREDIENTS_POST,
     Permissions.CATALOG_INGREDIENTS_PUT,
+    Permissions.CATALOG_PRODUCTS_GET,
     Permissions.CATALOG_PRODUCTS_POST,
     Permissions.CATALOG_PRODUCTS_PUT,
     Permissions.CATALOG_PRODUCTS_INGREDIENTS_GET,
