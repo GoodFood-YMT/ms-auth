@@ -38,22 +38,22 @@ const routesPermissions: RoutePermission[] = [
     permission: Permissions.CATALOG_CATEGORIES_PUT,
   },
   {
-    route: '/catalog/*/ingredients',
+    route: '/catalog/ingredients',
     method: 'GET',
     permission: Permissions.CATALOG_INGREDIENTS_GET,
   },
   {
-    route: '/catalog/*/ingredients',
+    route: '/catalog/ingredients',
     method: 'POST',
     permission: Permissions.CATALOG_INGREDIENTS_POST,
   },
   {
-    route: '/catalog/*/ingredients/*',
+    route: '/catalog/ingredients/*',
     method: 'GET',
     permission: Permissions.CATALOG_INGREDIENTS_GET,
   },
   {
-    route: '/catalog/*/ingredients/*',
+    route: '/catalog/ingredients/*',
     method: 'PUT',
     permission: Permissions.CATALOG_INGREDIENTS_PUT,
   },
