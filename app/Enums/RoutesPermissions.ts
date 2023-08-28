@@ -58,7 +58,7 @@ const routesPermissions: RoutePermission[] = [
     permission: Permissions.CATALOG_INGREDIENTS_PUT,
   },
   {
-    route: '/catalog/*/products/all',
+    route: '/catalog/products/all',
     method: 'GET',
     permission: Permissions.CATALOG_PRODUCTS_GET,
   },
