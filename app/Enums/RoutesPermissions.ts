@@ -217,6 +217,31 @@ const routesPermissions: RoutePermission[] = [
     method: 'DELETE',
     permission: Permissions.PROVIDERS_ALL,
   },
+  {
+    route: '/marketing/orders',
+    method: 'GET',
+    permission: Permissions.MARKETING_GET,
+  },
+  {
+    route: '/marketing/deliveries',
+    method: 'GET',
+    permission: Permissions.MARKETING_GET,
+  },
+  {
+    route: '/marketing/users',
+    method: 'GET',
+    permission: Permissions.MARKETING_GET,
+  },
+  {
+    route: '/marketing/turnovers',
+    method: 'GET',
+    permission: Permissions.MARKETING_GET,
+  },
+  {
+    route: '/marketing/kpi',
+    method: 'GET',
+    permission: Permissions.MARKETING_GET,
+  },
 ]
 
 export const getRoutePermission = (route: string, method: string): string | undefined => {

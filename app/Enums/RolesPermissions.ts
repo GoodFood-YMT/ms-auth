@@ -28,6 +28,7 @@ export const RolesPermissions: { [key: string]: string[] } = {
     Permissions.ORDERS_POST,
     Permissions.MANAGER_ORDERS_GET,
     Permissions.PROVIDERS_ALL,
+    Permissions.MARKETING_GET,
   ],
   [Roles.DELIVERER]: [
     Permissions.ADDRESSES_ALL,
