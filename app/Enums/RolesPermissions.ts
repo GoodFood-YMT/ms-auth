@@ -52,5 +52,6 @@ export const RolesPermissions: { [key: string]: string[] } = {
     Permissions.BASKET_CLEAR,
     Permissions.ORDERS_GET,
     Permissions.ORDERS_POST,
+    Permissions.DELIVERIES_GET,
   ],
 }
