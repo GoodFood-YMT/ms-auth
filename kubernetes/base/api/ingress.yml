@@ -9,7 +9,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: /auth/
+            path: /auth
             backend:
               service:
                 name: ms-auth
