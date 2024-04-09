@@ -4,3 +4,5 @@ export const Roles = {
   DELIVERER: 'deliverer',
   CUSTOMER: 'customer',
 } as const
+
+export type Roles = (typeof Roles)[keyof typeof Roles]
